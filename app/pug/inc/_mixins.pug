@@ -1,0 +1,17 @@
+mixin Heading(heading,level)
+    div(class=`heading-${level}`)
+         p #{heading}
+
+mixin Lists(type)
+    div(class=`list-${type}`)
+        ul
+            -for (var x=0;x<5;x++)
+                li Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+mixin Button(type)
+    p
+        a(href=""  class=`btn btn-${type}`) BUTTON
+mixin Input (type,title,help)
+    div(class=`form ${type}`)
+        .help=help
+        label(for="form")=title
+        input(id="form" class="form-control" type="text" placeholder="Placeholder")

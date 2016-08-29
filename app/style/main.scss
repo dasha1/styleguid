@@ -1,0 +1,335 @@
+@import "inc/mixins";
+$imgPath: '../img/';
+@font-face {
+  font-family: 'Raleway';
+  src: url(../fonts/Raleway-Black.ttf),
+url(../fonts/Raleway-Regular.ttf),
+url(../fonts/Raleway-Bold.ttf);
+}
+$color:#45474d;
+html {
+  font: {family: 'Raleway Regular';
+    size: 16px;  }
+  color: $color;
+}
+.clear {
+  clear: both;
+}
+//pharagrafs
+%fonts-style {
+  font: {family: 'Raleway Regular';
+    size: 16px;  }
+  color: $color;
+}
+p {
+ @extend %fonts-style;
+  margin-top: 0;
+  margin-bottom: 36px;
+}
+//headings
+$levels:(1:(72px:60px),
+        2:(48px:48px),
+3:(36px:36px),
+4:(24px:24px),
+5:(18px:24px));
+
+.heading- {
+  @each $level,$font-size in $levels {
+    &#{$level} p{
+      font-family: 'Raleway';
+      color: $color ;
+      @each $font-size,$line-height in $font-size {
+      @include levels($font-size,$line-height)}
+    }
+  }
+}
+//lists
+li {
+  @extend %fonts-style;
+}
+$types:("cube","circyle","mark");
+.list- {
+  @each $type in $types {
+    &#{$type}
+      ul {
+      width: 400px;
+        @include list($type)
+      }
+  }
+}
+//BUTTONS
+a {
+  text-decoration: none;
+}
+.btn {
+  font-family: 'Raleway';
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  padding: 14px 39px;
+}
+.btn- {
+  @each $button,$background,$color,$border in ("blue",#0099ff,#ffffff,#0099ff),
+  ("blue-linear",#ffffff,#0099ff,#0099ff),("grey-linear",#ffffff,#0099ff,#ced2d9),
+  ("orange",#ff6600,#ffffff,#ff6600),("orange-linear",#ffffff,#ff6600,#ff6600)
+  {
+    &#{$button} {
+        color:$color;
+        border:2px solid $border;
+        background: $background;
+    }
+  }
+}
+$shadow-blue:rgba(0,170,255,0.5);
+$shadow-orange:rgba(255,127,0,0.5);
+.btn- {
+  @each $button,$background,$color,$border,$shadow in ("blue",#00aaff,#ffffff,#00aaff,$shadow-blue),
+          ("blue-linear",#00aaff,#ffffff,#00aaff,$shadow-blue),("grey-linear",#00aaff,#ffffff,#00aaff,$shadow-blue),
+          ("orange",#ff7f00,#ffffff,#ff7f00,$shadow-orange),("orange-linear",#ff7f00,#ffffff,#ff7f00,$shadow-orange)
+  {
+    &#{$button}:hover {
+      box-shadow: 0 5px 20px $shadow;
+      color:$color;
+      border:2px solid $border;
+      background: $background;
+    }
+  }
+}
+.btn- {
+  @each $button,$background,$color,$border in ("blue",#0088ff,#ffffff,#0088ff),
+          ("blue-linear",#0088ff,#ffffff,#0088ff),("grey-linear",#0088ff,#ffffff,#0088ff),
+          ("orange",#ff5500,#ffffff,#ff5500),("orange-linear",#ff5500,#ffffff,#ff5500)
+  {
+    &#{$button}:active {
+      color:$color;
+      border:2px solid $border;
+      background: $background;
+    }
+  }
+}
+//to make button disabled add class disabled
+.btn- {
+  @each $button,$background,$color,$border in ("blue",#dfe2e8,#b6b9bf,#ced2d9),
+          ("blue-linear",#dfe2e8,#b6b9bf,#ced2d9),("grey-linear",#dfe2e8,#b6b9bf,#ced2d9),
+          ("orange",#dfe2e8,#b6b9bf,#ced2d9),("orange-linear",#dfe2e8,#b6b9bf,#ced2d9)
+  {
+    &#{$button}.disabled  {
+      color:$color;
+      border:2px solid $border;
+      background: $background;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}
+//to make alternativ style add class alternative
+.btn- {
+  @each $button,$background,$color,$border in ("blue",#ffffff,#0099ff,#ffffff),
+          ("blue-linear",#ffffff,#0099ff,#ffffff),("grey-linear",#ffffff,#0099ff,#ffffff),
+          ("orange",#ffffff,#ff7f00,#ffffff),("orange-linear",#ffffff,#ff7f00,#ffffff)
+  {
+    &#{$button}.alternative {
+      box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+      color:$color;
+      border:2px solid $border;
+      background: $background;
+    }
+  }
+}
+//checkboxes&radioboxes
+input[type="checkbox"],
+input[type="radio"]{
+  display: none;
+}
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  @extend %fonts-style;
+  vertical-align: top;
+  cursor: pointer;
+  position: relative;
+}
+input[type="checkbox"] + label:before,
+input[type="radio"] + label:before
+{
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ced2d9;
+  content: "";
+  display: inline-block;
+  margin: 0 5px 15px 0;
+
+}
+input[type="checkbox"] + label:hover:before,
+input[type="radio"] + label:hover:before
+{
+     color:#00aaff;
+     content: url("#{$imgPath}hover-checkbox.png");
+     background-color: #00aaff;
+     border-color: #00aaff;
+     box-shadow: 0 5px 20px $shadow-blue;
+     transition: all .5s;
+}
+input[type="checkbox"]:checked + label:before {
+  content: url("#{$imgPath}checked-checkbox.png");
+}
+input[type="checkbox"]:checked:disabled + label:before,
+input[type="radio"]:checked:disabled + label:before
+{
+  content: url("#{$imgPath}disabled-checkbox.png");
+  background-color: #dfe2e8;
+  border-color: #ced2d9;
+}
+input[type="checkbox"]:disabled + label:before,
+input[type="radio"]:disabled + label:before
+{
+  background-color: #dfe2e8;
+  border-color: #ced2d9;
+  content: "";
+}
+input[type="radio"] + label:before {
+  border-radius: 12px;
+}
+input[type="radio"] + label:hover:before {
+  content: url("#{$imgPath}hover-radiobox.png");
+}
+input[type="radio"]:checked + label:before {
+  content: url("#{$imgPath}checked-radiobox.png");
+}
+input[type="radio"]:checked:disabled + label:before {
+  content: url("#{$imgPath}disabled-radiobox.png");
+}
+//alternative checkboxes
+.alternative-checkbox,.alternative-radiobox {
+
+  input[type="checkbox"] + label:before,
+  input[type="radio"] + label:before {
+    display: none;
+  }
+  input[type="checkbox"] + label,
+  input[type="radio"] + label {
+    @extend %fonts-style;
+    vertical-align: top;
+    cursor: pointer;
+    position: relative;
+    padding-left: 12px;
+    padding-top: 11px;
+    padding-bottom: 13px;
+  }
+  input[type="checkbox"] + label:hover,
+  input[type="radio"] + label:hover {
+    background-color: #00aaff;
+    box-shadow: 0 5px 20px $shadow-blue;
+
+  }
+  input[type="checkbox"] + label:hover:after,
+  input[type="radio"] + label:hover:after
+  {
+    color:#00aaff;
+    content: url("#{$imgPath}hover-checkbox.png");
+    background-color: #00aaff;
+    border-color: #00aaff;
+    box-shadow: 0 5px 20px $shadow-blue;
+  }
+  input[type="radio"] + label:hover:after {
+    content: url("#{$imgPath}hover-radiobox.png");
+  }
+}
+//inputs
+.form {
+  label {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-weight: bold;
+  }
+  input {
+    padding-top: 17px;
+    padding-left: 25px;
+    padding-bottom: 17px;
+    border-radius: 28px;
+    background-color:#f0f2f7;
+    border: 2px solid #ced2d9;
+    font-size: 14px;
+    &:hover,&:active {
+      border: none;
+      background-color: #ffffff;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+    }
+  }
+
+}
+
+.success {
+  .form-control {
+    border: 2px solid #24b324;
+  }
+}
+.error {
+  .form-control {
+    border: 2px solid #ff3333;
+  }
+  .help {
+    color: #ffffff;
+    background-color: #ff3333;
+    &:after {
+      border-top: 10px solid #ff3333;
+    }
+  }
+}
+.disabled {
+  .form-control {
+    background-color: #dfe2e8;
+    cursor: not-allowed;
+  }
+}
+.help {
+  width: 192px;
+  padding-top: 15px;
+  padding-left: 25px;
+  padding-bottom: 15px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+  &:after {
+    display: inherit;
+    content: '';
+    position: absolute;
+    border: 10px solid transparent;
+    border-top: 10px solid #ffffff;
+    margin-top: 15px;
+}
+}
+// tables
+.tables {
+  .help,label  {
+    display: none;
+  }
+}
+table {
+  border-collapse: collapse;
+}
+thead {
+  a {
+    color: inherit;
+  }
+  .form input {
+    background-color: #ffffff;
+  }
+  td {
+    padding-right: 25px;
+    padding-bottom: 10px;
+  }
+}
+tbody {
+  color: #000000;
+  td {
+    border-bottom: 1px solid #ced2d9;
+    padding-top: 2%;
+    padding-bottom: 4%;
+    border-top:1px solid #ced2d9;
+    padding-right: 25px;
+  }
+}

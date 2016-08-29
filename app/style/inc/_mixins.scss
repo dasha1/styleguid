@@ -1,0 +1,16 @@
+@mixin levels($font-size,$line-height){
+  font:{
+    size: $font-size;
+  }
+  line-height: $line-height;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  margin-top: 0;
+}
+@mixin list($type){
+  list-style-type: none;
+  li {
+    list-style-image: url("#{$imgPath}#{$type}.png");
+    margin-bottom: 25px;
+  }
+}

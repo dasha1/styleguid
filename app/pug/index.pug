@@ -2,8 +2,122 @@ doctype html
 html(lang="ru")
     head
         include ./inc/_head
+        include ./inc/_mixins
     body
+        .headings
+            +Heading("Heading 1","1")
+            +Heading("Heading 2","2")
+            +Heading("Heading 3","3")
+            +Heading("Heading 4","4")
+            +Heading("Heading 5","5")
+        hr
+        .clear
 
+        .paragraphs
+            +Heading("paragraph","4")
+            p.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque tortor in magna vulputate dignissim. Nam imperdiet erat vitae enim semper, vitae pulvinar magna porttitor. Etiam sollicitudin, sem elementum efficitur aliquet, arcu dolor interdum est, nec tristique turpis enim sollicitudin neque. Pellentesque aliquet et risus mollis lobortis. Pellentesque magna urna, accumsan ut feugiat eget, porttitor at lectus. Quisque ex est, mattis in magna in, egestas venenatis velit. Quisque vel dolor quis odio elementum mollis. Donec dapibus gravida justo. Aliquam at congue dui. Ut gravida est non sem placerat, ac interdum arcu gravida. Quisque id sapien placerat, mollis velit ut, rhoncus mi. Donec sed tincidunt mi. Cras feugiat, enim eu viverra porta, mauris leo aliquam odio, in finibus dui sem eget velit. Sed malesuada consequat sapien, non tincidunt nunc faucibus commodo. Maecenas luctus eros in neque ultrices volutpat.
+            p.
+                Etiam pharetra iaculis dui. Etiam non ligula lorem. Integer nec rutrum dui. Cras luctus, diam quis sollicitudin facilisis, dolor odio egestas massa, at tincidunt nibh elit a odio. Nunc ultricies commodo arcu vitae pretium. Ut aliquet sodales elementum. Donec a quam nec tellus porttitor elementum vel eu nibh. Nullam id dui tellus. Donec in leo quis turpis elementum mollis. Etiam bibendum semper purus a auctor. Donec a convallis enim. Sed non est sit amet ipsum posuere consectetur.
+        hr
+        .clear
+        .lists
+            +Lists("cube")
+        hr
+        .clear
+            +Lists("circyle")
+        hr
+        .clear
+            +Lists("mark")
+        hr
+        .clear
+        .buttons
+            +Button("blue")
+            +Button("blue-linear")
+            +Button("grey-linear")
+            +Button("orange")
+            +Button("orange-linear")
+            +Button("orange-linear alternative")
+            +Button("orange-linear disabled")
+        hr
+        .clear
+        .checkboxes
+            -for (var n=0;n<5;n++)
+                div
+                    input#id(type="checkbox" class="checkbox" hidden)
+                    label(for="id") Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        hr
+        .clear
+        .radioboxes
+            -for (var n=0;n<5;n++)
+                div
+                    input#id_r(type="radio" class="radiobox" hidden)
+                    label(for="id_r") Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        hr
+        .clear
+        .alternative-checkboxes
+            -for (var n=0;n<5;n++)
+                div.alternative-checkbox
+                    input#id_a(type="checkbox" class="checkbox" hidden)
+                    label(for="id_a") Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        hr
+        .clear
+        .alternative-radioboxes
+            -for (var n=0;n<5;n++)
+                div.alternative-radiobox
+                    input#id_r_a(type="radio" class="radiobox" hidden)
+                    label(for="id_r_a") Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        .inputs
+            +Input("","Label","Пример подсказки")
+            +Input("hover active","Hover active","")
+            +Input("success","Success","")
+            +Input("error","Error","Ошибка!")
+            +Input("disabled","Disabled","")
+        hr
+        .clear
+        .tables
+            table
+                thead
+                    tr
+                        th
+                            a(href="") #
+                        th
+                            a(href="") Lorem ipsum
+                        th
+                            a(href="") $
+                        th
+                            a(href="") Lorem ipsum
+                        th
+                            a(href="") url
+                    tr
+                        td &nbsp;
+                        td
+                            +Input("")
+                        td
+                            +Input("")
+                        td
+                            +Input("")
+                        td
+                            +Input("")
 
-
-
+                tbody
+                    tr
+                        td 1
+                        td dolor sit amet
+                        td 1000
+                        td consectetur adipiscing elit.
+                        td http://service.reclamare.ua/projects/index
+                    tr
+                        td 2
+                        td consectetur adipiscing elit.
+                        td 3000
+                        td dolor sit amet
+                        td http://reclamare.ua/
+                    tr
+                        td 2
+                        td consectetur adipiscing elit.
+                        td 3000
+                        td dolor sit amet
+                        td http://reclamare.ua/
+        hr
+        .clear
