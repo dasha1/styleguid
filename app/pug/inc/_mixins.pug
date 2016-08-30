@@ -7,9 +7,9 @@ mixin Lists(type)
         ul
             -for (var x=0;x<5;x++)
                 li Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-mixin Button(type)
+mixin Button(type,id)
     p
-        a(href=""  class=`btn btn-${type}`) BUTTON
+        a(href="#" id=id class=`btn  btn-${type}`) BUTTON
 mixin Input (type,title,help)
     div(class=`form ${type}`)
         .help=help

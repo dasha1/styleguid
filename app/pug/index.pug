@@ -4,6 +4,10 @@ html(lang="ru")
         include ./inc/_head
         include ./inc/_mixins
     body
+        +Button("blue","alert")
+        +Button("orange","error")
+        hr
+        .clear
         .headings
             +Heading("Heading 1","1")
             +Heading("Heading 2","2")
@@ -44,7 +48,7 @@ html(lang="ru")
         .checkboxes
             -for (var n=0;n<5;n++)
                 div
-                    input#id(type="checkbox" class="checkbox" hidden)
+                    input#id(type="checkbox" class="checkbox"  hidden)
                     label(for="id") Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         hr
         .clear
@@ -58,15 +62,17 @@ html(lang="ru")
         .alternative-checkboxes
             -for (var n=0;n<5;n++)
                 div.alternative-checkbox
-                    input#id_a(type="checkbox" class="checkbox" hidden)
+                    input#id_a(type="checkbox" class="checkbox"  hidden)
                     label(for="id_a") Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         hr
         .clear
         .alternative-radioboxes
             -for (var n=0;n<5;n++)
                 div.alternative-radiobox
-                    input#id_r_a(type="radio" class="radiobox" hidden)
+                    input#id_r_a(type="radio" class="radiobox"  hidden)
                     label(for="id_r_a") Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        hr
+        .clear
         .inputs
             +Input("","Label","Пример подсказки")
             +Input("hover active","Hover active","")
@@ -121,3 +127,5 @@ html(lang="ru")
                         td http://reclamare.ua/
         hr
         .clear
+
+    include ./inc/_scripts

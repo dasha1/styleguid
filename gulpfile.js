@@ -57,7 +57,10 @@ gulp.task('clean', function (cb) {
 gulp.task('pug:dist', function() {
     return gulp.src(path.src.pug)
         .pipe(pug({
-            pretty: true
+            pretty: true,
+            locals:{
+                cssPath:'./css/'
+            }
         }))
         .pipe(gulp.dest(path.dist.pug))
         .pipe(reload({stream: true}));
