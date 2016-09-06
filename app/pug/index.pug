@@ -4,6 +4,35 @@ html(lang="ru")
         include ./inc/_head
         include ./inc/_mixins
     body
+        nav.navbar.navbar-fixed-top
+            .container
+                .navbar-header
+                    a(class="navbar-brand" href="/")
+                        img(src="./img/logo.png")
+                .collapse.navbar-collapse
+                    ul.navbar-right.nav
+                        li.dropdown
+                            .ava
+                                img(src="./img/ava.png")
+                            .name-logout
+                                .user-name vadim
+                                a(href="/") Logout
+                            a(href="/" class="dropdown-toggle menu-caret" id="drop" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+                                    span(class="caret")
+                            ul(aria-labelledby="drop").dropdown-menu
+                                li
+                                    a(href="/") dashbord
+                                li
+                                    a(href="/") projects
+                                li
+                                    a(href="/") new project
+                                li
+                                    a(href="/") users
+                                li
+                                    a(href="/") logout
+        .padding
+        hr
+        .clear
         +Button("blue","alert")
         +Button("orange","error")
         hr
@@ -73,7 +102,7 @@ html(lang="ru")
                     label(for="id_r_a") Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         hr
         .clear
-        .inputs
+        .inputs.col-lg-4
             +Input("","Label","Пример подсказки")
             +Input("hover active","Hover active","")
             +Input("success","Success","")

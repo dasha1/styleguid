@@ -1,30 +1,107 @@
 @import "inc/mixins";
-$imgPath: '../img/';
+$imgPath: '../images/';
 @font-face {
-  font-family: 'Raleway';
-  src: url(../fonts/Raleway-Black.ttf),
-url(../fonts/Raleway-Regular.ttf),
-url(../fonts/Raleway-Bold.ttf);
+  font-family: 'Raleway-Black';
+  src: url('/fonts/Raleway-Black.eot');
+  src: url('/fonts/Raleway-Black.woff2') format('woff2'),
+  url('/fonts/Raleway-Black.woff') format('woff'),
+  url('/fonts/Raleway-Black.eot?#iefix') format('embedded-opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+
+
+
+@font-face {
+  font-family: 'ralewayblack_italic';
+  src: url('/fonts/raleway-blackitalic-webfont.eot');
+  src: url('/fonts/raleway-blackitalic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/raleway-blackitalic-webfont.woff2') format('woff2'),
+  url('/fonts/raleway-blackitalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'ralewaybold';
+  src: url('/fonts/raleway-bold-webfont.eot');
+  src: url('/fonts/raleway-bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/raleway-bold-webfont.woff2') format('woff2'),
+  url('/fonts/raleway-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'ralewaybold_italic';
+  src: url('/fonts/raleway-bolditalic-webfont.eot');
+  src: url('/fonts/raleway-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/raleway-bolditalic-webfont.woff2') format('woff2'),
+  url('/fonts/raleway-bolditalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'ralewayitalic';
+  src: url('/fonts/raleway-italic-webfont.eot');
+  src: url('/fonts/raleway-italic-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/raleway-italic-webfont.woff2') format('woff2'),
+  url('/fonts/raleway-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+@font-face {
+  font-family: 'ralewayregular';
+  src: url('/fonts/raleway-regular-webfont.eot');
+  src: url('/fonts/raleway-regular-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/raleway-regular-webfont.woff2') format('woff2'),
+  url('/fonts/raleway-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
 $color:#45474d;
 html {
-  font: {family: 'Raleway Regular';
+  font: {family: ralewayregular;
     size: 16px;  }
   color: $color;
+}
+.container {
+  width: 100%;
 }
 .clear {
   clear: both;
 }
 //pharagrafs
 %fonts-style {
-  font: {family: 'Raleway Regular';
+  font: {family: ralewayregular;
     size: 16px;  }
   color: $color;
 }
 p {
  @extend %fonts-style;
   margin-top: 0;
-  margin-bottom: 36px;
+  margin-bottom: 22px;
 }
 //headings
 $levels:(1:(72px:60px),
@@ -35,8 +112,8 @@ $levels:(1:(72px:60px),
 
 .heading- {
   @each $level,$font-size in $levels {
-    &#{$level} p{
-      font-family: 'Raleway';
+    &#{$level} {
+      font-family: Raleway-Black;
       color: $color ;
       @each $font-size,$line-height in $font-size {
       @include levels($font-size,$line-height)}
@@ -58,11 +135,11 @@ $types:("cube","circyle","mark");
   }
 }
 //BUTTONS
-a {
+a:hover,a:visited,a:focus,a:active {
   text-decoration: none;
 }
-.btn {
-  font-family: 'Raleway';
+.btn-c {
+  font-family: ralewaybold;
   display: inline-block;
   margin-bottom: 0;
   text-align: center;
@@ -71,7 +148,8 @@ a {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 25px;
-  padding: 14px 39px;
+  padding: 12px 39px;
+  text-transform: uppercase;
   &:focus {
     outline: none;
   }
@@ -100,6 +178,7 @@ $shadow-orange:rgba(255,127,0,0.5);
       color:$color;
       border:2px solid $border;
       background: $background;
+      text-decoration: none;
     }
   }
 }
@@ -108,7 +187,7 @@ $shadow-orange:rgba(255,127,0,0.5);
           ("blue-linear",#0088ff,#ffffff,#0088ff),("grey-linear",#0088ff,#ffffff,#0088ff),
           ("orange",#ff5500,#ffffff,#ff5500),("orange-linear",#ff5500,#ffffff,#ff5500)
   {
-    &#{$button}:active {
+    &#{$button}:active,&#{$button}:focus {
       color:$color;
       border:2px solid $border;
       background: $background;
@@ -160,12 +239,12 @@ input[type="radio"] + label {
 input[type="checkbox"] + label:before,
 input[type="radio"] + label:before
 {
-  width: 20px;
-  height: 20px;
+  width: 23px;
+  height: 23px;
   border: 2px solid #ced2d9;
   content: "";
-  display: inline-block;
-  margin: -3px 5px 15px 0;
+  display: block;
+  margin: 0px 7px -22px -27px;
 
 }
 input[type="checkbox"]:not(:checked,:disabled) + label:hover:before,
@@ -301,22 +380,32 @@ margin-top:11px ;
     background-color:#f0f2f7;
     border: 2px solid #ced2d9;
     font-size: 14px;
-    &:hover,&:active {
+    &:hover,&:active,&:focus {
       border: none;
       background-color: #ffffff;
       box-shadow: 0 2px 15px rgba(0,0,0,0.3);
     }
   }
-
 }
-
-.success {
-  .form-control {
+.form-control {
+  outline: none;
+  border-radius: 28px;
+  background-color:#ffffff;
+  border: 2px solid #ced2d9;
+  font-size: 14px;
+  &:hover,&:active,&:focus {
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+  }
+}
+.has-success {
+  .form-control{
     border: 2px solid #24b324;
   }
 }
-.error {
-  .form-control {
+.has-error {
+  .form-control{
     border: 2px solid #ff3333;
   }
   .help {
@@ -327,8 +416,11 @@ margin-top:11px ;
     }
   }
 }
-.disabled {
-  .form-control {
+.has-error .help-block, .has-error .control-label,.has-success .control-label {
+  color: #000000;
+}
+.form-control {
+   .has-disabled{
     background-color: #dfe2e8;
     cursor: not-allowed;
   }
@@ -348,11 +440,37 @@ margin-top:11px ;
     margin-top: 15px;
 }
 }
+
 // tables
 .tables {
   .help,label  {
     display: none;
   }
+}
+.table-bordered {
+  border: none;
+  thead {
+    tr {
+      th {
+        border: none;
+      }
+    }
+  }
+  tbody,thead {
+    color: #000000;
+    tr,th {
+      border: none;
+    td {
+      border-bottom: 1px solid #ced2d9;
+      padding-top: 2%;
+      padding-bottom: 2%;
+      border-top:1px solid #ced2d9;
+      border-left:none;
+      border-right: none;
+      padding-right: 25px;
+      background-color: #ffffff;
+    }
+  }}
 }
 table {
   @extend %fonts-style;
@@ -370,16 +488,7 @@ thead {
     padding-bottom: 10px;
   }
 }
-tbody {
-  color: #000000;
-  td {
-    border-bottom: 1px solid #ced2d9;
-    padding-top: 2%;
-    padding-bottom: 4%;
-    border-top:1px solid #ced2d9;
-    padding-right: 25px;
-  }
-}
+
 //alerts
 .alertify {
   border: none;
@@ -427,4 +536,99 @@ tbody {
     @extend %button-close;
     border: none;
   }
+}
+.padding {
+  padding-top: 92px;
+}
+//navbar
+.navbar {
+  min-height: 60px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.3);
+  background-color:#39454d;
+}
+.navbar-inverse {
+  border: none;
+  .navbar-nav >li>a:hover {
+    color: #ced2d9;
+  }
+}
+.ava {
+  float: left;
+  padding-right: 10px;
+}
+.name-logout {
+  float: left;
+}
+.menu-caret {
+  float: left;
+}
+.navbar-collapse {
+  padding-top: 10px;
+}
+
+.panel {
+  background-color: #303940;
+  border-radius:0 ;
+  box-shadow: none;
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    li {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      &:hover {
+        background-color: #0099ff;
+      }
+    }
+  }
+  a {
+    color: #ffffff;
+    padding-left: 15px;
+  }
+}
+.panel-primary {
+  background-color: #303940;
+  border: none;
+  .panel-heading {
+    background-color: #303940;
+    border-bottom:2px solid #0099ff;
+    width: 50px;
+    padding-left: 0;
+  }
+}
+.logged-in, .breadcrumb {
+  background-color: #e6eaf2;
+}
+.logged-in {
+  padding: 30px;
+  min-height: 88vh;
+}
+.breadcrumb {
+a {
+  color:#0099ff;}
+}
+.projects-index,.projects-create, .user-update, .project-user-index,.project-user-create, .user-index, .user-create, .projects-view, .groups-form, .groups-view, .keys-form, .projects-update, .site-login {
+  background-color: #ffffff;
+  padding: 30px;
+  margin-bottom: 15px;
+}
+.wrap{
+  background-color: #303940;
+}
+.last-update {
+  padding: 5px;
+}
+.form-group {
+  padding-top: 15px;
+}
+.footer {
+  border: none;
+  background-color:#39454d;
+p {
+  color: #ffffff;
+}
+}
+.table-striped {
+  background-color: #ffffff;
 }

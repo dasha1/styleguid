@@ -3,15 +3,41 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/alertify.default.css">
     <link rel="stylesheet" href="./css/alertify.core.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/main.css">
     <title>Styleguid</title>
   </head>
   <body>
-        <p><a class="btn  btn-blue" href="#" id="alert">BUTTON</a></p>
-        <p><a class="btn  btn-orange" href="#" id="error">BUTTON</a></p>
+    <nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header"><a class="navbar-brand" href="/"><img src="./img/logo.png"></a></div>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-right nav">
+            <li class="dropdown">
+              <div class="ava"><img src="./img/ava.png"></div>
+              <div class="name-logout">
+                <div class="user-name">vadim</div><a href="/">Logout</a>
+              </div><a class="dropdown-toggle menu-caret" href="/" id="drop" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="drop">
+                <li><a href="/">dashbord</a></li>
+                <li><a href="/">projects</a></li>
+                <li><a href="/">new project</a></li>
+                <li><a href="/">users</a></li>
+                <li><a href="/">logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="padding"></div>
+    <hr>
+    <div class="clear"></div>
+        <p><a class="btn-c  btn-blue" href="#" id="alert">BUTTON</a></p>
+        <p><a class="btn-c  btn-orange" href="#" id="error">BUTTON</a></p>
     <hr>
     <div class="clear"></div>
     <div class="headings">
@@ -80,13 +106,13 @@
     <hr>
     <div class="clear"></div>
     <div class="buttons">
-          <p><a class="btn  btn-blue" href="#">BUTTON</a></p>
-          <p><a class="btn  btn-blue-linear" href="#">BUTTON</a></p>
-          <p><a class="btn  btn-grey-linear" href="#">BUTTON</a></p>
-          <p><a class="btn  btn-orange" href="#">BUTTON</a></p>
-          <p><a class="btn  btn-orange-linear" href="#">BUTTON</a></p>
-          <p><a class="btn  btn-orange-linear alternative" href="#">BUTTON</a></p>
-          <p><a class="btn  btn-orange-linear disabled" href="#">BUTTON</a></p>
+          <p><a class="btn-c  btn-blue" href="#">BUTTON</a></p>
+          <p><a class="btn-c  btn-blue-linear" href="#">BUTTON</a></p>
+          <p><a class="btn-c  btn-grey-linear" href="#">BUTTON</a></p>
+          <p><a class="btn-c  btn-orange" href="#">BUTTON</a></p>
+          <p><a class="btn-c  btn-orange-linear" href="#">BUTTON</a></p>
+          <p><a class="btn-c  btn-orange-linear alternative" href="#">BUTTON</a></p>
+          <p><a class="btn-c  btn-orange-linear disabled" href="#">BUTTON</a></p>
     </div>
     <hr>
     <div class="clear"></div>
@@ -186,7 +212,7 @@
     </div>
     <hr>
     <div class="clear"></div>
-    <div class="inputs">
+    <div class="inputs col-lg-4">
           <div class="form ">
             <div class="help">Пример подсказки</div>
             <label for="form">Label</label>
@@ -287,5 +313,6 @@
   </body>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/alertify.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
   <script src="./js/main.js"></script>
 </html>
